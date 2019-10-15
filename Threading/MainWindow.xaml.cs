@@ -27,14 +27,20 @@ namespace Threading
 
         private void Btn_Task_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i <= 10000; i++) 
+            //DoWork();
+            Task.Factory.StartNew(DoWork);
+        }
+
+        private void DoWork()
+        {
+            for (int i = 0; i <= 10000; i++)
             {
                 for (int j = 0; j <= 100000; j++)
                 {
 
                 }
             }
-            lbl_Risultato.Content = "finito";
+            lbl_Risultato.Content = "Finito";
         }
     }
 }
