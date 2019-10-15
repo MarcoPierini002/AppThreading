@@ -40,6 +40,12 @@ namespace Threading
 
                 }
             }
+            //AggiornaInterfaccia();
+            Dispatcher.Invoke(AggiornaInterfaccia);
+        }
+
+        private void AggiornaInterfaccia()
+        {
             lbl_Risultato.Content = "Finito";
         }
     }
