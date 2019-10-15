@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,6 +30,7 @@ namespace Threading
         {
             //DoWork();
             Task.Factory.StartNew(DoWork);
+            
         }
 
         private void DoWork()
@@ -48,5 +50,29 @@ namespace Threading
         {
             lbl_Risultato.Content = "Finito";
         }
+
+        private void Btn_conta_Click(object sender, RoutedEventArgs e)
+        {
+            //DoCount();
+            Task.Factory.StartNew(DoCount);
+        }
+
+        private  void DoCount()
+        {
+            for (int i = 0; i <= 10000; i++)
+            {
+                for (int j = 0; j <= 100000; j++)
+                {
+                    Dispatcher.Invoke(()=>AggiornaInterfaccia(j));
+                    Thread.Sleep(1000);
+                }
+            }
+        }
+
+        private void AggiornaInterfaccia(int j)
+        {
+            lbl_conteggio.Content = j.ToString();
+        }
+
     }
 }
